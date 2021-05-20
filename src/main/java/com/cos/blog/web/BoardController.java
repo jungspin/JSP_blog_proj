@@ -33,24 +33,25 @@ public class BoardController extends HttpServlet {
 		// 하나의 컨트롤러에서 다양한 요청을 받아 분기해주기
 		String cmd = request.getParameter("cmd"); 
 		
-		// http://localhost:8000/blog/board?cmd=list
-		if (cmd.equals("list")) {
+		
+	}
+
+	private void router(String cmd) { // process 가 얘를 때릴거얌, 역할 : 분기
+		
+		if (cmd.equals("joinForm")) { // form 적혀있으면 전부 sendRedirect
 			
-		} else if (cmd.equals("detail")) { 
+		} else if (cmd.equals("join")) { // joinProc
 			
-		} else if (cmd.equals("delete")) { 
+		} else if (cmd.equals("loginForm")) { 
 			
-		} else if (cmd.equals("updateForm")) { 
+		} else if (cmd.equals("login")) {
+			
+		} else if (cmd.equals("updateForm")) {
 			
 		} else if (cmd.equals("update")) {
 			
-		} else if (cmd.equals("saveForm")) {
-			
-		} else if (cmd.equals("save")) {
-			
-		} else if (cmd.equals("search")) {
+		} else if (cmd.equals("logout")) {
 			
 		}
 	}
-
 }
