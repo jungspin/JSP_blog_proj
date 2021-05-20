@@ -1,4 +1,4 @@
-package com.cos.db;
+package com.cos.blog.config;
 
 import java.sql.Connection;
 
