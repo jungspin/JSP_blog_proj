@@ -1,4 +1,4 @@
-package com.cos.blog.service.user;
+package com.cos.blog.service.board;
 
 import java.io.IOException;
 
@@ -8,11 +8,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.cos.blog.service.Action;
 
-public class JoinFormAction implements Action{
+public class SaveFormAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// sendRedirection 해주면 되니 login 으로
+		// 리다이렉션
+		
 	}
 
 }

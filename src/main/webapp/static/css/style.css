@@ -1,0 +1,14 @@
+@charset "UTF-8";
+@import url("size.css");
+* {
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+}
+
+.footer {
+	position: fixed; /* 도화지가 하나 더 붙는다고 생각하면 됨 */
+	bottom: 0px;
+	width: 100%;
+	z-index: 99;
+}

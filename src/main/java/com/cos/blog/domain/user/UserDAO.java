@@ -2,20 +2,27 @@ package com.cos.blog.domain.user;
 
 import java.util.List;
 
+import com.cos.blog.domain.board.Board;
+
 public class UserDAO {
 
-	public User findByUsernameAndPasswod(String username, String password) {
+	
+	// 중복검사는 담에 혼자 해바
+	
+	
+	public User findByUsernameAndPassword(String username, String password) {
 		return null;
 	}
 	
+	
 	// default
 	// get
-	public User findById(int id) { // 한건 찾기
+	public User findById(int id) { // id로 셀렉트
 		return null;
 	}
 
 	// get
-	public List<User> findAll() { // 모두 찾기
+	public List<Board> findAll() {
 		return null;
 	}
 
@@ -30,7 +37,7 @@ public class UserDAO {
 	}
 
 	// post
-	public int deleteById(int id) {
+	public int deleteById() {
 		return -1;
 	}
 }

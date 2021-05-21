@@ -7,7 +7,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.cos.blog.service.Action;
+import com.cos.blog.service.board.DeleteAction;
+import com.cos.blog.service.board.DetailAction;
+import com.cos.blog.service.board.ListAction;
+import com.cos.blog.service.board.SaveAction;
+import com.cos.blog.service.board.SaveFormAction;
+import com.cos.blog.service.board.SearchAction;
+import com.cos.blog.service.board.UpdateAction;
+import com.cos.blog.service.board.UpdateFormAction;
+
 // http://localhost:8000/blog/board
+// 경로는 모델이름으로 해주렴
 @WebServlet("/board")
 public class BoardController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -25,33 +36,38 @@ public class BoardController extends HttpServlet {
 	public void doProcess(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		// 1. null과 공백 접근 금지 (유효성 검사)
-		if(request.getParameter("cmd")==null || request.getParameter("cmd").equals("") ) {
+		if (request.getParameter("cmd")==null || request.getParameter("cmd").equals("")) {
 			return;
 		}
+	
+		String cmd = request.getParameter("cmd");
+		Action action = router(cmd); // 책임이 분리가 되었다
 		
-		// 하나의 컨트롤러에서 다양한 요청을 받아 분기해주기
-		String cmd = request.getParameter("cmd"); 
-		
-		
-	}
-
-	private void router(String cmd) { // process 가 얘를 때릴거얌, 역할 : 분기
-		
-		if (cmd.equals("joinForm")) { // form 적혀있으면 전부 sendRedirect
-			
-		} else if (cmd.equals("join")) { // joinProc
-			
-		} else if (cmd.equals("loginForm")) { 
-			
-		} else if (cmd.equals("login")) {
-			
-		} else if (cmd.equals("updateForm")) {
-			
-		} else if (cmd.equals("update")) {
-			
-		} else if (cmd.equals("logout")) {
-			
+		if (action != null) {
+			action.execute(request, response);
 		}
 	}
+	private static Action router(String cmd) {
+		// http://localhost:8000/blog/board?cmd=list
+		if(cmd.equals("list")) { // 게시물 전체보기
+			return new ListAction();
+		} else if(cmd.equals("detail")) { // 상세보기
+			return new DetailAction();
+		} else if(cmd.equals("delete")) {
+			return new DeleteAction();
+		} else if(cmd.equals("updateForm")) { // form 태그가 있는건 무조건 form 붙일래? 그래
+			return new UpdateFormAction(); // user 랑 헷갈리지마
+		} else if(cmd.equals("update")) { // update 수행
+			return new UpdateAction();
+		} else if(cmd.equals("saveForm")) {
+			return new SaveFormAction();
+		} else if(cmd.equals("save")) {
+			return new SaveAction();
+		} else if(cmd.equals("search")) { // 검색
+			return new SearchAction();
+		} 
+		return null;
+	}
+		
+	
 }

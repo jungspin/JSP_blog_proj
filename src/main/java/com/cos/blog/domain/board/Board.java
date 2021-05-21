@@ -3,19 +3,19 @@ package com.cos.blog.domain.board;
 import java.sql.Timestamp;
 
 public class Board { // N, 1
-
+	
 	private int id; // PK, Sequence
-	private String title; // 찐 id
+	private String title;
 	private String content;
-	private int userId; // FK -> 데이터베이스에서는 제약조건 걸지마 !!!!
-	private Timestamp created; // user 가 생성된 시간
+	private int userId; // FK DB에서 제약조건 걸지마
+	private Timestamp created; // user 가 회원가입한 시간
 	
 	public Board() {
-		super();
+		
 	}
 
 	public Board(int id, String title, String content, int userId, Timestamp created) {
-		super();
+		
 		this.id = id;
 		this.title = title;
 		this.content = content;

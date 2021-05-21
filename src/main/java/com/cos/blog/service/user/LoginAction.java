@@ -8,20 +8,16 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.cos.blog.service.Action;
 
-public class JoinAction implements Action {
+public class LoginAction implements Action{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 1. 유효성 검사
-		
-		// 2. http body 데이터 변수로 받아야 됨
-		
-		// 3. DAO 연결해서 save() 하기
-		
-		// 4. result 받기
-		
-		// 5. 1일때, 1아닐때를 분기해서  1-> 로그인페이지(sendR) / !1-> joinForm페이지로 보내기
+		// loginForm 에서 받은 데이터 유효성 검사
+		// 아이디랑 비밀번호 null 아닌지, 일치하는지?
+		// 같은 정보가 있는지 db에 select (findByUsernameAndPassword)
+		// result 받기
+		// 결과값 리턴되는거 확인, 세션에 저장해야하나? 로그아웃도 있던데..
 		
 	}
-	
+
 }

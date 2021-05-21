@@ -1,4 +1,4 @@
-package com.cos.blog.service.user;
+package com.cos.blog.service.board;
 
 import java.io.IOException;
 
@@ -8,11 +8,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.cos.blog.service.Action;
 
-public class JoinFormAction implements Action{
+public class SaveAction implements Action{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// sendRedirection 해주면 되니 login 으로
+		// 값 받아와서 DAO save(Board board)
+		// 리턴값 따라 분기
+		
 	}
 
 }

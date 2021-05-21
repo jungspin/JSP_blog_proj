@@ -6,22 +6,26 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+
 public class DBConn {
 	
-	public static Connection dbConn() {
+	public static Connection 디비연결 () {
+		
 		try {
 			Context initContext = new InitialContext();
 			Context envContext  = (Context)initContext.lookup("java:/comp/env");
 			DataSource ds = (DataSource)envContext.lookup("jdbc/myoracle");
 			Connection conn = ds.getConnection();
-			
 			System.out.println("DB연결성공");
-			return conn; 
+			return conn;  
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		System.out.println("DB연결실패");
 		return null;
-		
+	}
+	
+	public static void main(String[] args) {
+		디비연결();
 	}
 }

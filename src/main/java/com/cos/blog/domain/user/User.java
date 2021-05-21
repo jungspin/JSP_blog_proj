@@ -2,22 +2,21 @@ package com.cos.blog.domain.user;
 
 import java.sql.Timestamp;
 
-// 1. 모델링
 public class User { // 1, 1
-	
+
 	private int id; // PK, Sequence
 	private String username; // 찐 id
 	private String password;
 	private String email;
 	private String address;
-	private Timestamp created; // user 가 생성된 시간
-	
+	private Timestamp created; // user 가 회원가입한 시간
 	
 	public User() {
 		
 	}
 
 	public User(int id, String username, String password, String email, String address, Timestamp created) {
+		
 		this.id = id;
 		this.username = username;
 		this.password = password;
@@ -73,8 +72,4 @@ public class User { // 1, 1
 	public void setCreated(Timestamp created) {
 		this.created = created;
 	}
-	
-	
-	
-	
 }
