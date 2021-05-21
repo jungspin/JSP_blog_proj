@@ -12,7 +12,7 @@ public class JoinFormAction implements Action{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// sendRedirection 해주면 되니 login 으로
+		response.sendRedirect("views/user/joinForm.jsp"); // jsp 파일을 찾아주는 거니까 webapp 디폴트 경로
 	}
 
 }

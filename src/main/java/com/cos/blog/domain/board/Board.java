@@ -4,17 +4,17 @@ import java.sql.Timestamp;
 
 public class Board { // N, 1
 	
-	private int id; // PK, Sequence
+	private Integer id; // PK, Sequence
 	private String title;
 	private String content;
-	private int userId; // FK DB에서 제약조건 걸지마
+	private Integer userId; // FK DB에서 제약조건 걸지마
 	private Timestamp created; // user 가 회원가입한 시간
 	
 	public Board() {
 		
 	}
 
-	public Board(int id, String title, String content, int userId, Timestamp created) {
+	public Board(Integer id, String title, String content, Integer userId, Timestamp created) {
 		
 		this.id = id;
 		this.title = title;
@@ -23,7 +23,7 @@ public class Board { // N, 1
 		this.created = created;
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
@@ -47,7 +47,7 @@ public class Board { // N, 1
 		this.content = content;
 	}
 
-	public int getUserId() {
+	public Integer getUserId() {
 		return userId;
 	}
 

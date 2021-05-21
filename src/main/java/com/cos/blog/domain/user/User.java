@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 
 public class User { // 1, 1
 
-	private int id; // PK, Sequence
+	private Integer id; // PK, Sequence
 	private String username; // 찐 id
 	private String password;
 	private String email;
@@ -15,7 +15,7 @@ public class User { // 1, 1
 		
 	}
 
-	public User(int id, String username, String password, String email, String address, Timestamp created) {
+	public User(Integer id, String username, String password, String email, String address, Timestamp created) {
 		
 		this.id = id;
 		this.username = username;
@@ -25,7 +25,7 @@ public class User { // 1, 1
 		this.created = created;
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
