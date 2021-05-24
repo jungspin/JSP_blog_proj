@@ -10,6 +10,7 @@ import com.cos.blog.domain.board.BoardDAO;
 import com.cos.blog.domain.user.User;
 import com.cos.blog.domain.user.UserDAO;
 import com.cos.blog.service.Action;
+import com.cos.modValid.ModValid;
 
 public class JoinAction implements Action {
 
@@ -17,16 +18,22 @@ public class JoinAction implements Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { // void 여도 return 가능
 		// 1. 유효성 검사 -> postman 으로 하면 리콰이어 안먹음
 		// ?username=ssar, ?username=, ?
-		if (request.getParameter("username")==null || request.getParameter("username").equals("")) {
-			return;
-		}else if (request.getParameter("password")==null || request.getParameter("password").equals("")) {
-			return;
-		}else if (request.getParameter("email")==null || request.getParameter("email").equals("")) {
-			return;
-		}else if (request.getParameter("address")==null || request.getParameter("address").equals("")) {
+//		if (request.getParameter("username")==null || request.getParameter("username").equals("")) {
+//			return;
+//		}else if (request.getParameter("password")==null || request.getParameter("password").equals("")) {
+//			return;
+//		}else if (request.getParameter("email")==null || request.getParameter("email").equals("")) {
+//			return;
+//		}else if (request.getParameter("address")==null || request.getParameter("address").equals("")) {
+//			return;
+//		}
+		
+		ModValid modValid = new ModValid();
+		
+		if (modValid.mVailds(request, response).equals("실패")) {
+			System.out.println("실패");
 			return;
 		}
-		
 		
 		// 2. http body 데이터 변수로 받아야 됨
 		String username = request.getParameter("username");
