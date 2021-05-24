@@ -1,6 +1,7 @@
 package com.cos.blog.web;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,10 +12,10 @@ import com.cos.blog.service.Action;
 import com.cos.blog.service.board.DeleteAction;
 import com.cos.blog.service.user.JoinAction;
 import com.cos.blog.service.user.JoinFormAction;
-import com.cos.blog.service.user.LoginAction;
 import com.cos.blog.service.user.LoginFormAction;
 import com.cos.blog.service.user.UpdateAction;
 import com.cos.blog.service.user.UpdateFormAction;
+import com.cos.blog.service.user.LoginAction;
 
 // http://localhost:8000/blog/user
 // 경로는 모델이름으로 해주렴

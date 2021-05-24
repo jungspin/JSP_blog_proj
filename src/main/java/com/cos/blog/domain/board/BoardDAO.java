@@ -5,9 +5,10 @@ import java.sql.PreparedStatement;
 import java.util.List;
 
 import com.cos.blog.config.DBConn;
+import com.cos.blog.domain.CrudDAO;
 import com.cos.blog.web.dto.BoardDetailDTO;
 
-public class BoardDAO {
+public class BoardDAO implements CrudDAO<Board>{ // T는 변수
 
 	// 상세보기시 Board 정보와 User 정보를 조인해서 가져올 함수
 	// id만 알면 조인해서 가져오면 됨
@@ -15,46 +16,35 @@ public class BoardDAO {
 		return null;
 	}
 
-	// get
-	public Board findById(int id) { // id로 셀렉트
+	@Override
+	public Board findById(int id) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
-	// get
+	@Override
 	public List<Board> findAll() {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
-	// post
-	public int save(Board board) {
-		String sql = "INSERT INTO boards (id, title, content, userId, created) "
-									+ "VALUES(boards_seq.nextval,?,?,?,SYSDATE)";
-
-		try {
-			Connection conn = DBConn.디비연결();
-
-			PreparedStatement pstmt = conn.prepareStatement(sql); // 프로토콜이 적용된 버퍼
-
-			pstmt.setString(1, board.getTitle());
-			pstmt.setString(2, board.getContent());
-			//pstmt.setString(3, board.getTitle()); // userId 어케 하냐
-		
-
-			return pstmt.executeUpdate(); // 변경된 행의 갯수 리턴
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return -1;
+	@Override
+	public int save(Board data) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
-	// post
-	public int update(Board board) {
-		return -1;
+	@Override
+	public int update(Board data) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
-	// post
+	@Override
 	public int deleteById() {
-		return -1;
+		// TODO Auto-generated method stub
+		return 0;
 	}
+
+	
 }
