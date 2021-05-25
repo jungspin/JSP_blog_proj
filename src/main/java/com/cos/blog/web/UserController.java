@@ -13,6 +13,7 @@ import com.cos.blog.service.board.DeleteAction;
 import com.cos.blog.service.user.JoinAction;
 import com.cos.blog.service.user.JoinFormAction;
 import com.cos.blog.service.user.LoginFormAction;
+import com.cos.blog.service.user.LogoutAction;
 import com.cos.blog.service.user.UpdateAction;
 import com.cos.blog.service.user.UpdateFormAction;
 import com.cos.blog.service.user.LoginAction;
@@ -62,7 +63,7 @@ public class UserController extends HttpServlet {
 		} else if(cmd.equals("update")) {
 			return new UpdateAction();
 		} else if(cmd.equals("logout")) {
-			return new DeleteAction();
+			return new LogoutAction();
 		} 
 		return null;
 	}

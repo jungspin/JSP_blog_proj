@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.cos.blog.domain.user.User;
 import com.cos.blog.domain.user.UserDAO;
 import com.cos.blog.service.Action;
+import com.cos.blog.util.ModValid;
 import com.cos.blog.util.Script;
 
 
@@ -31,12 +32,13 @@ public class JoinAction implements Action {
 //			return;
 //		}
 		
-		//ModValid modValid = new ModValid();
+		ModValid modValid = new ModValid();
 		List<String> keys = Arrays.asList("username","password","email","address");
-//		if (ModValid.(keys,request, response).equals("실패")) {
-//			System.out.println("실패");
-//			return;
-//		}
+		
+		if (modValid.mVaild(keys, request, response) != 1) {
+			System.out.println("실패");
+			return;
+		}
 		
 		// 2. http body 데이터 변수로 받아야 됨
 		String username = request.getParameter("username");
@@ -47,7 +49,7 @@ public class JoinAction implements Action {
 		
 		// 3. DAO 연결해서 save() 하기
 		// 4. result 받기
-		UserDAO userDAO = new UserDAO();
+		UserDAO userDAO = UserDAO.getInstance(); // 이미 떠있는 객체를 가져오는 것
 		int result = userDAO.save(user);
 		
 		

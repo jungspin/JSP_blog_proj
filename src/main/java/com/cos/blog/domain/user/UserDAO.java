@@ -10,29 +10,37 @@ import com.cos.blog.domain.CrudDAO;
 
 public class UserDAO implements CrudDAO<User> {
 
+	// 싱글톤 패턴 
+	private static UserDAO instance = new UserDAO();
+	private UserDAO() {} // 외부에서 new 하는걸 막음
+	public static UserDAO getInstance ()	{
+		return instance;
+	}
+	
 	// 중복검사는 담에 혼자 해바
 
 	public User findByUsernameAndPassword(String username, String password) {
-		User user = new User();
-		String sql = "SELECT * FROM users WHERE id = ? AND password = ?";
-		
+		User user = new User(); // 데이터베이스와 동기화 되지 않았기 때문에 entity 붙이지 않아
+		String sql = "SELECT id, username, email, address, created FROM users WHERE username = ? AND password = ?";
+
 		try {
 			Connection conn = DBConn.디비연결();
-			PreparedStatement pstmt = conn.prepareStatement(sql); 
+			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, username);
 			pstmt.setString(2, password);
 			ResultSet rs = pstmt.executeQuery(); // 결과(row)를 리턴
-			
+
 			while (rs.next()) {
-				user.setUsername(rs.getString("id"));
-				user.setPassword(rs.getString("password"));
+				user.setId(rs.getInt("id"));
+				user.setUsername(rs.getString("username"));
 				user.setEmail(rs.getString("email"));
 				user.setAddress(rs.getString("address"));
+				user.setCreated(rs.getTimestamp("created"));
 			}
-			
+
 			return user;
 		} catch (Exception e) {
-			
+
 		}
 		return null;
 	}
