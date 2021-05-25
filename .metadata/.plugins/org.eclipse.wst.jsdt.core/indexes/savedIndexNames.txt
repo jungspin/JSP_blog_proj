@@ -1,0 +1,7 @@
+INDEX VERSION 1.4+C:\devtools\jspClone\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+3397738254.index
+2805478267.index
+3813862947.index
+3459929172.index
+1132919417.index
+3666893704.index

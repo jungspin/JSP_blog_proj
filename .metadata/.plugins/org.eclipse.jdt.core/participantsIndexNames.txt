@@ -1,0 +1,11 @@
+INDEX VERSION 1.131
+C:\devtools\jspClone\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2181129309.index
+\blog\src\main\java
+C:\devtools\jspClone\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2282832053.index
+\blog\src\main\java
+C:\devtools\jspClone\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1870098586.index
+\blog\src\main\java
+C:\devtools\jspClone\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4109448601.index
+\blog\src\main\java
+C:\devtools\jspClone\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3741096816.index
+\blog\src\main\java
