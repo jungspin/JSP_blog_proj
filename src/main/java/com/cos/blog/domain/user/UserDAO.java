@@ -94,7 +94,7 @@ public class UserDAO implements CrudDAO<User> {
 	}
 
 	@Override
-	public int deleteById() {
+	public int deleteById(int id) {
 		// TODO Auto-generated method stub
 		return 0;
 	}

@@ -1,6 +1,7 @@
 package com.cos.blog.util;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
 
@@ -16,23 +17,27 @@ public class ModValid {
 
 		// key 값 추출
 		Enumeration<String> key = request.getParameterNames();
+		List<String> list = new ArrayList<>();
 
-		// username =
-		// username = ssar&paswword = 1234
-		// 뒤에 key 두개가 더 있는데 안들어온걸 알 수가 없음
-		// -> null을 못 잡아 -> 받을 key 값이 몇개인지 알아야됨
-
-		// 키 값이 null인지 검증
-		// 검증
-
-		// 키 공백인 것 검증
 		while (key.hasMoreElements()) {
 			String param = key.nextElement();
 
-			if (request.getParameter(param) == null || request.getParameter(param).equals("")) {
+			// 근데 만약 키값을 다르게 설정하고 길이만 맞춰주면 뚫을 수 있지 않나?
+			if (!keys.contains(param)) {
+				continue;
+			}
+			System.out.println(param);
+			list.add(param);
+
+			if (request.getParameter(param).equals("")) {
 				return -1;
 			}
+
 		}
+		if (list.size() != keys.size()) {
+			return -1;
+		}
+
 		return 1;
 	}
 

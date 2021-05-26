@@ -16,5 +16,5 @@ public interface CrudDAO<T> {
 	public int update(T data);
 
 	// post
-	public int deleteById();
+	public int deleteById(int id);
 }
