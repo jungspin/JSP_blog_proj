@@ -5,7 +5,7 @@
 	<form action="${cp}/user?cmd=login" method="post">
 		<!-- 얘만 예외로 post! 나머지 셀렉트는 다 get -->
 		<div class="form-group">
-			<input type="text" class="form-control" placeholder="Enter username" name="username" value="" required="required" />
+			<input type="text" class="form-control" placeholder="Enter username" name="username" value="${cookie.rememberMe.value}" required="required" />
 		</div>
 		<div class="form-group">
 			<input type="password" class="form-control" placeholder="Enter password" name="password" required="required" />

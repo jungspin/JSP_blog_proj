@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.cos.blog.service.Action;
+import com.cos.blog.service.board.DeleteAction;
 import com.cos.blog.service.board.DetailAction;
 import com.cos.blog.service.board.ListAction;
 import com.cos.blog.service.board.SaveAction;
@@ -51,7 +52,7 @@ public class BoardController extends HttpServlet {
 		} else if(cmd.equals("detail")) { // 상세보기
 			return new DetailAction();
 		} else if(cmd.equals("delete")) {
-			
+			return new DeleteAction();
 		} else if(cmd.equals("updateForm")) { // form 태그가 있는건 무조건 form 붙일래? 그래
 			 // user 랑 헷갈리지마
 		} else if(cmd.equals("update")) { // update 수행

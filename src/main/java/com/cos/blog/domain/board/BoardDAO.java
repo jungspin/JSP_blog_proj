@@ -48,9 +48,9 @@ public class BoardDAO implements CrudDAO<Board> { // T는 변수
 
 			}
 
-			System.out.println("=======================");
-			System.out.println(boardDetailDTO);
-			System.out.println("=======================");
+//			System.out.println("=======================");
+//			System.out.println(boardDetailDTO);
+//			System.out.println("=======================");
 
 			return boardDetailDTO;
 
@@ -113,6 +113,7 @@ public class BoardDAO implements CrudDAO<Board> { // T는 변수
 
 		} catch (Exception e) {
 			e.printStackTrace();
+			
 		}
 		return -1;
 	}
@@ -125,21 +126,20 @@ public class BoardDAO implements CrudDAO<Board> { // T는 변수
 
 	@Override
 	public int deleteById(int id) {
-		String sql = "DELETE FROM boards WHERE id = ?";
+		String sql = "DELETE FROM item WHERE id = ?";
 
 		try {
 			Connection conn = DBConn.디비연결(); // 얘는 무조건 필요!
 
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, id);
-			int result = pstmt.executeUpdate(); // 변경된 행의 개수를 리턴
 
-			return result;
+			return pstmt.executeUpdate();
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return -1;
+		return -1;   
 	}
 
 }
