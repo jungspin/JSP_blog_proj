@@ -19,9 +19,10 @@ public class ListAction implements Action {
 		// 세션, 유효성 다 필요없음
 
 		// 핵심 로직
+		int page = Integer.parseInt(request.getParameter("page"));
 
 		BoardDAO boardDAO = BoardDAO.getInstance(); // 싱글톤패턴
-		List<Board> boardsEntity = boardDAO.findAll();
+		List<Board> boardsEntity = boardDAO.findAll(page);
 		
 //		System.out.println("======================"); // 오류나서 테스트 해봤음. 습관화해라
 //		System.out.println(boardsEntity.size());

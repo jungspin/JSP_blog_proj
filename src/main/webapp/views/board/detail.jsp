@@ -4,7 +4,12 @@
 
 <div class="container">
 	<c:if test="${principal.id == dto.userId}">
+<<<<<<< HEAD
 		<a href="#" class="btn btn-warning">수정</a> <br/>
+=======
+		<a href="${cp}/board?cmd=updateForm&id=${dto.id}" class="btn btn-warning">수정</a>
+		<br />
+>>>>>>> 471ce3a (board CRUD COMPLETE)
 		<form action="${cp}/board?cmd=delete" method="post">
 			<input type="hidden" name="id" value="${dto.id}" />
 			<button id="btn-delete" class="btn btn-danger" type="submit">삭제</button>

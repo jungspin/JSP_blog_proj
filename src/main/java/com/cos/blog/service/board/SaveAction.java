@@ -1,8 +1,6 @@
 package com.cos.blog.service.board;
 
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -13,7 +11,6 @@ import com.cos.blog.domain.board.Board;
 import com.cos.blog.domain.board.BoardDAO;
 import com.cos.blog.domain.user.User;
 import com.cos.blog.service.Action;
-import com.cos.blog.util.ModValid;
 import com.cos.blog.util.Script;
 
 public class SaveAction implements Action {
@@ -26,20 +23,18 @@ public class SaveAction implements Action {
 		User principal = (User) session.getAttribute("principal");
 
 		if (principal == null) {
-			response.sendRedirect("views/board/saveForm.jsp");
-		} else {
 			Script.href("로그인을 해주세요", response);
 		}
 
 		// 유효성 검사 -> 로직이 좀 달라서(썸머노트) 얘는 일단 빼
 		// key 값에 files가 있네....
-		ModValid modValid = new ModValid();
-		List<String> keys = Arrays.asList("title", "content");
-
-		if (modValid.mVaild(keys, request, response) != 1) {
-			System.out.println("실패");
-			return;
-		}
+//		ModValid modValid = new ModValid();
+//		List<String> keys = Arrays.asList("title", "content");
+//
+//		if (modValid.mVaild(keys, request, response) != 1) {
+//			System.out.println("실패");
+//			return;
+//		}
 		// 공통로직 끝
 
 		// 핵심 로직
@@ -58,6 +53,7 @@ public class SaveAction implements Action {
 		// 끝나면 로그 남기고, 특정 페이지로 이동
 		if (result == 1) {
 			response.sendRedirect("/blog");
+			return;
 		} else {
 			Script.back("글쓰기실패", response);
 		}

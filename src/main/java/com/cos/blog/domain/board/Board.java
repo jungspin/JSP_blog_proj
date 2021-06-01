@@ -10,6 +10,14 @@ public class Board { // N, 1
 	private Integer userId; // FK DB에서 제약조건 걸지마
 	private Timestamp created; // user 가 회원가입한 시간
 	
+	
+	
+	@Override
+	public String toString() {
+		return "Board [id=" + id + ", title=" + title + ", content=" + content + ", userId=" + userId + ", created="
+				+ created + "]";
+	}
+
 	public Board() {
 		
 	}

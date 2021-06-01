@@ -47,6 +47,10 @@ pageContext.setAttribute("cp", cp);
 
 			</ul>
 		</div>
+		<form class="form-inline my-2 my-lg-0" action="${cp}/board?cmd=list" method="get">
+			<input class="form-control mr-sm-2" type="text" placeholder="작성자검색" name="username" aria-label="Search">
+			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+		</form>
 	</nav>
 
 	<br>

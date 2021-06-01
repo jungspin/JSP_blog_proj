@@ -14,6 +14,8 @@ import com.cos.blog.service.board.DetailAction;
 import com.cos.blog.service.board.ListAction;
 import com.cos.blog.service.board.SaveAction;
 import com.cos.blog.service.board.SaveFormAction;
+import com.cos.blog.service.board.UpdateAction;
+import com.cos.blog.service.board.UpdateFormAction;
 
 // http://localhost:8000/blog/board
 // 경로는 모델이름으로 해주렴
@@ -54,9 +56,9 @@ public class BoardController extends HttpServlet {
 		} else if(cmd.equals("delete")) {
 			return new DeleteAction();
 		} else if(cmd.equals("updateForm")) { // form 태그가 있는건 무조건 form 붙일래? 그래
-			 // user 랑 헷갈리지마
+			return new UpdateFormAction();
 		} else if(cmd.equals("update")) { // update 수행
-			
+			return new UpdateAction();   
 		} else if(cmd.equals("saveForm")) {
 			return new SaveFormAction(); // 글쓰기 화면 액션 가기 (세션 검증 후)
 		} else if(cmd.equals("save")) {

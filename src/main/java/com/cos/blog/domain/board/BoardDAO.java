@@ -65,6 +65,75 @@ public class BoardDAO implements CrudDAO<Board> { // T는 변수
 		return null;
 	}
 
+	// findAll 오버로딩 -> 이름으로 검색하는거 할건데 잠만
+//	public List<Board> findAll(String username) {
+//		List<Board> boards = new ArrayList<>();
+//		// 전체보기 할때는 보통 ORDEY BY 써주고 최신데이터가 앞에 나오게 해줌
+//		String sql = "SELECT * FROM boards ORDER BY user DESC";
+//
+//		try {
+//			Connection conn = DBConn.디비연결(); // 얘는 무조건 필요!
+//
+//			PreparedStatement pstmt = conn.prepareStatement(sql);
+//			ResultSet rs = pstmt.executeQuery(); // 결과(row)를 리턴
+//
+//			while (rs.next()) {
+//				Board board = new Board();
+//				board.setId(rs.getInt("id"));
+//				board.setTitle(rs.getString("title"));
+//				board.setContent(rs.getString("content"));
+//				board.setUserId(rs.getInt("userId"));
+//				board.setCreated(rs.getTimestamp("created"));
+//
+//				boards.add(board);
+//			}
+//			return boards;
+//
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		return null;
+//	}
+
+	// findAll 오버로딩
+	public List<Board> findAll(int page) {
+		List<Board> boards = new ArrayList<>();
+		// StringBuffer -> 동시접근 불가능
+		// StringBulider -> 동시접근 가능
+		StringBuffer sb = new StringBuffer();
+		sb.append("select * from");
+		sb.append("(");
+		sb.append("select id, title, content, userId, created, rownum as num from boards order by id DESC");
+		sb.append(")");
+		sb.append("where num > ? and num <= ?");
+		// page 쿼리에 바로 넣는거 아니라고 했지 기억나지
+
+		try {
+			Connection conn = DBConn.디비연결(); // 얘는 무조건 필요!
+
+			PreparedStatement pstmt = conn.prepareStatement(sb.toString());
+			pstmt.setInt(1, page * 3);
+			pstmt.setInt(2, (page + 1) * 3);
+			ResultSet rs = pstmt.executeQuery(); // 결과(row)를 리턴
+
+			while (rs.next()) {
+				Board board = new Board();
+				board.setId(rs.getInt("id"));
+				board.setTitle(rs.getString("title"));
+				board.setContent(rs.getString("content"));
+				board.setUserId(rs.getInt("userId"));
+				board.setCreated(rs.getTimestamp("created"));
+
+				boards.add(board);
+			}
+			return boards;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 	@Override
 	public List<Board> findAll() {
 		List<Board> boards = new ArrayList<>();
@@ -113,15 +182,40 @@ public class BoardDAO implements CrudDAO<Board> { // T는 변수
 
 		} catch (Exception e) {
 			e.printStackTrace();
+<<<<<<< HEAD
 			
+=======
+
+>>>>>>> 471ce3a (board CRUD COMPLETE)
 		}
 		return -1;
 	}
 
 	@Override
 	public int update(Board data) {
-		// TODO Auto-generated method stub
-		return 0;
+		// % 사용하려면 !! (쿼리문에 그냥 넣으면 안됨)
+		// pstmt.setString(1, "%"+name+"%");
+		String sql = "UPDATE boards SET title = ?, content = ? WHERE id = ? ";
+
+		try {
+			Connection conn = DBConn.디비연결(); // 얘는 무조건 필요!
+
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			Board board = (Board) data;
+			pstmt.setString(1, board.getTitle());
+			pstmt.setString(2, board.getContent());
+
+			pstmt.setInt(3, board.getId());
+
+			// System.out.println(board);
+			int result = pstmt.executeUpdate(); // 변경된 행의 개수를 리턴
+
+			return result;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1;
 	}
 
 	@Override
