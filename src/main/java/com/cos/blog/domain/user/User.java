@@ -10,13 +10,19 @@ public class User { // 1, 1
 	private String email;
 	private String address;
 	private Timestamp created; // user 가 회원가입한 시간
-	
+
 	public User() {
-		
+
+	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", email=" + email
+				+ ", address=" + address + ", created=" + created + "]";
 	}
 
 	public User(Integer id, String username, String password, String email, String address, Timestamp created) {
-		
+
 		this.id = id;
 		this.username = username;
 		this.password = password;
