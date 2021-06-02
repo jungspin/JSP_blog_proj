@@ -1,24 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
-
+<!-- 회원정보수정!!!!!!! -->
 <div class="container">
-	<form action="${cp}/user?cmd=join" method="post">
+	<form action="${cp}/user?cmd=update" method="post">
 		<div class="form-group">
-			<input type="text" class="form-control" placeholder="Enter username" name="username" required="required" />
+			<input type="hidden" name="id" value="${userUpEntity.id}"/>
+			<input type="text" class="form-control" value="${userUpEntity.username}" name="username" required="required" />
 		</div>
 		<div class="form-group">
-			<input type="password" class="form-control" placeholder="Enter password" name="password" required="required" />
+			<input type="password" class="form-control" value="${userUpEntity.password}" name="password" required="required" />
 		</div>
 		<div class="form-group">
-			<input type="email" class="form-control" placeholder="Enter email" name="email" required="required" />
+			<input type="email" class="form-control" value="${userUpEntity.email}" name="email" required="required" />
 		</div>
 		<div class="form-group">
 			<div class="d-flex justify-content-end">
 				<button type="button" class="btn btn-info" onClick="goPopup();">주소검색</button>
 			</div>
-			<input type="text" class="form-control" placeholder="Enter address" name="address" id="address" required readonly />
+			<input type="text" class="form-control" value="${userUpEntity.address}" name="address" id="address" required readonly />
 		</div>
-		<button type="submit" class="btn btn-primary">회원가입</button>
+		<button type="submit" class="btn btn-primary">회원정보수정</button>
+	</form>
+	<br />
+	<form action="${cp}/user?cmd=delete" method="post">
+		<input type="hidden" name="id" value="${userUpEntity.id}" />
+		<button type="submit" class="btn btn-primary">회원탈퇴</button>
 	</form>
 </div>
 <script>

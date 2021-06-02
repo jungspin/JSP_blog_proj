@@ -40,7 +40,7 @@ pageContext.setAttribute("cp", cp);
 					</c:when>
 					<c:otherwise>
 						<li class="nav-item"><a class="nav-link" href="${cp}/board?cmd=saveForm">글쓰기</a></li>
-						<li class="nav-item"><a class="nav-link" href="${cp}/user?cmd=updateForm">회원정보변경</a></li>
+						<li class="nav-item"><a class="nav-link" href="${cp}/user?cmd=updateForm&id=${principal.id}">회원정보변경</a></li>
 						<li class="nav-item"><a class="nav-link" href="${cp}/user?cmd=logout">로그아웃</a></li>
 					</c:otherwise>
 				</c:choose>

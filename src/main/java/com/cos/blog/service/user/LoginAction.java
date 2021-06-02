@@ -3,6 +3,7 @@ package com.cos.blog.service.user;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -51,17 +52,17 @@ public class LoginAction implements Action {
 			// 체크가 되었고, 로그인이 완료되었고 => response 의 header 에 Cookie를 저장해서 날리세요
 			// key 값은 똑같이 rememberMe를 들고 있는게 낫겠지
 			// 브라우저는 rememberMe == ssar 을 가지고 있으면 된다
-<<<<<<< HEAD
+
 			response.setHeader("Set-Cookie", "rememberMe=" + username);
 
 //			Cookie cook = new Cookie("rememberMe", username);
 //			response.addCookie(cook);
-=======
+
 			//response.setHeader("Set-Cookie", "rememberMe=" + username);
 
 			Cookie cook = new Cookie("rememberMe", userEntity.getUsername());
 			response.addCookie(cook);
->>>>>>> 471ce3a (board CRUD COMPLETE)
+
 
 			// 리퀘스트에 세션이 있는게 아니고 리퀘스트를 통해서 세션 공간에 접근!!
 			HttpSession session = request.getSession();

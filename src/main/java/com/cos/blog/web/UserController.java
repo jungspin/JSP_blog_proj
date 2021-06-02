@@ -9,11 +9,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.cos.blog.service.Action;
+import com.cos.blog.service.user.DeleteAction;
 import com.cos.blog.service.user.JoinAction;
 import com.cos.blog.service.user.JoinFormAction;
 import com.cos.blog.service.user.LoginAction;
 import com.cos.blog.service.user.LoginFormAction;
 import com.cos.blog.service.user.LogoutAction;
+import com.cos.blog.service.user.UpdateAction;
+import com.cos.blog.service.user.UpdateFormAction;
 
 // http://localhost:8000/blog/user
 // 경로는 모델이름으로 해주렴
@@ -56,11 +59,13 @@ public class UserController extends HttpServlet {
 		} else if(cmd.equals("login")) {
 			return new LoginAction();
 		} else if(cmd.equals("updateForm")) {
-			
+			return new UpdateFormAction();
 		} else if(cmd.equals("update")) {
-			
+			return new UpdateAction();
 		} else if(cmd.equals("logout")) {
 			return new LogoutAction();
+		} else if(cmd.equals("delete")) {
+			return new DeleteAction();
 		} 
 		return null;
 	}

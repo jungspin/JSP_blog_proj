@@ -182,13 +182,9 @@ public class BoardDAO implements CrudDAO<Board> { // T는 변수
 
 		} catch (Exception e) {
 			e.printStackTrace();
-<<<<<<< HEAD
-			
-=======
 
->>>>>>> 471ce3a (board CRUD COMPLETE)
+			return -1;
 		}
-		return -1;
 	}
 
 	@Override
@@ -220,7 +216,7 @@ public class BoardDAO implements CrudDAO<Board> { // T는 변수
 
 	@Override
 	public int deleteById(int id) {
-		String sql = "DELETE FROM item WHERE id = ?";
+		String sql = "DELETE FROM boards WHERE id = ?";
 
 		try {
 			Connection conn = DBConn.디비연결(); // 얘는 무조건 필요!
@@ -233,7 +229,7 @@ public class BoardDAO implements CrudDAO<Board> { // T는 변수
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return -1;   
+		return -1;
 	}
 
 }
