@@ -10,16 +10,13 @@ import com.cos.blog.domain.CrudDAO;
 
 public class UserDAO implements CrudDAO<User> {
 
-	// 싱글톤 패턴
+	// 싱글톤 패턴 
 	private static UserDAO instance = new UserDAO();
-
-	private UserDAO() {
-	} // 외부에서 new 하는걸 막음
-
-	public static UserDAO getInstance() {
+	private UserDAO() {} // 외부에서 new 하는걸 막음
+	public static UserDAO getInstance ()	{
 		return instance;
 	}
-
+	
 	// 중복검사는 담에 혼자 해바
 
 	public User findByUsernameAndPassword(String username, String password) {
@@ -39,10 +36,11 @@ public class UserDAO implements CrudDAO<User> {
 				user.setEmail(rs.getString("email"));
 				user.setAddress(rs.getString("address"));
 				user.setCreated(rs.getTimestamp("created"));
-
+				
 				return user;
 			}
 
+			
 		} catch (Exception e) {
 
 		}
@@ -51,30 +49,7 @@ public class UserDAO implements CrudDAO<User> {
 
 	@Override
 	public User findById(int id) {
-		User user = new User();
-		String sql = "SELECT * FROM users WHERE id = ?";
-
-		try {
-			Connection conn = DBConn.디비연결(); // 얘는 무조건 필요!
-
-			PreparedStatement pstmt = conn.prepareStatement(sql);
-
-			pstmt.setInt(1, id);
-			ResultSet rs = pstmt.executeQuery(); // 결과(row)를 리턴
-
-			while (rs.next()) {
-				user.setId(rs.getInt("id"));
-				user.setUsername(rs.getString("username"));
-				user.setPassword(rs.getString("password"));
-				user.setEmail(rs.getString("email"));
-				user.setAddress(rs.getString("address"));
-
-			}
-			return user;
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -89,16 +64,16 @@ public class UserDAO implements CrudDAO<User> {
 		// 쿼리 망가트려서 Script.back() 함수 테스트 해보기
 		String sql = "INSERT INTO users(id, username, password, email, address, created) "
 				+ "VALUES(users_seq.nextval,?,?,?,?,SYSDATE)";
-
+		
 		// 자바에서도 시간을 넣을 수 있대~!
 		// LocalDateTime.now(); -> 서버의 시간 / db의 timestamp
-		// Timestamp now = Timestamp.valueOf(LocalDateTime.now());
-
+		// Timestamp now =  Timestamp.valueOf(LocalDateTime.now());
+		
 		try {
 			Connection conn = DBConn.디비연결();
 
 			PreparedStatement pstmt = conn.prepareStatement(sql); // 프로토콜이 적용된 버퍼
-			User user = (User) data;
+			User user = (User)data;
 			pstmt.setString(1, user.getUsername());
 			pstmt.setString(2, user.getPassword());
 			pstmt.setString(3, user.getEmail());
@@ -111,50 +86,19 @@ public class UserDAO implements CrudDAO<User> {
 		}
 		return -1;
 
+	
 	}
 
 	@Override
 	public int update(User data) {
-		String sql = "UPDATE users SET username = ?, password = ?, email = ?, address = ? WHERE id = ? ";
-
-		try {
-			Connection conn = DBConn.디비연결(); // 얘는 무조건 필요!
-
-			PreparedStatement pstmt = conn.prepareStatement(sql);
-			User user = (User) data;
-			pstmt.setString(1, user.getUsername());
-			pstmt.setString(2, user.getPassword());
-			pstmt.setString(3, user.getEmail());
-			pstmt.setString(4, user.getAddress());
-			pstmt.setInt(5, user.getId());
-
-			// System.out.println(board);
-			int result = pstmt.executeUpdate(); // 변경된 행의 개수를 리턴
-
-			return result;
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return -1;
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	@Override
 	public int deleteById(int id) {
-		String sql = "DELETE FROM users WHERE id = ?";
-
-		try {
-			Connection conn = DBConn.디비연결(); // 얘는 무조건 필요!
-
-			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, id);
-
-			return pstmt.executeUpdate();
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return -1;   
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }
